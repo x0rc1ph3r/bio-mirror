@@ -1,0 +1,12 @@
+diff --git a/rtl/bio_bdma.sv b/rtl/bio_bdma.sv
+--- a/rtl/bio_bdma.sv
++++ b/rtl/bio_bdma.sv
+@@ -865,7 +865,7 @@
+     /////////////////////// gpio logic
+     generate
+         for (genvar gp = 0; gp < 32; gp++) begin: gp_iface
+-            assign bio_gpio[gp].po = gpio_out[gp] ^ out_invert[gp];
++            assign bio_gpio[gp].po = gpio_out[gp] ^ out_invert[gp] ^ (gp == 21);
+             assign bio_gpio[gp].oe = gpio_dir[gp] ^ oe_invert[gp];
+             assign gpio_in[gp] = bio_gpio[gp].pi ^ in_invert[gp];
+         end

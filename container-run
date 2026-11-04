@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Convenience wrapper for the container flow. Works with podman or docker.
 #
-#   ./container-run                      # run configs/smoke.json (build only if image missing)
+#   ./container-run                      # run configs/smoke.jsonc (build only if image missing)
 #   ./container-run configs/foo.json     # run a specific config
 #   ./container-run --rebuild [config]   # rebuild image first (after editing rtl/ or sim/)
 #   ./container-run --build-only         # just (re)build the image, don't run
@@ -23,7 +23,7 @@ if [ -z "$ENGINE" ]; then
     else echo "error: neither podman nor docker found on PATH" >&2; exit 1; fi
 fi
 
-REBUILD=0; BUILD_ONLY=0; CONFIG=configs/smoke.json; PORT=""
+REBUILD=0; BUILD_ONLY=0; CONFIG=configs/smoke.jsonc; PORT=""
 while [ $# -gt 0 ]; do
     case "$1" in
         -b|--rebuild)  REBUILD=1 ;;
@@ -44,7 +44,7 @@ build_image() {
     "$ENGINE" build "${flags[@]}" -t "$IMAGE" .
 }
 
-REMOTE_IMAGE="ghcr.io/YOURORG/bio-sim:latest"  # set this at top of script
+REMOTE_IMAGE="${BIO_SIM_REMOTE_IMAGE:-ghcr.io/baochip/bio-sim:latest}"
 
 if [ "$REBUILD" = 1 ]; then
     build_image

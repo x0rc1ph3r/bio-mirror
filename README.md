@@ -5,6 +5,36 @@ everything it would do (load code, poke control registers, start cores) is
 reduced to APB transactions on the block's slave ports, driven from C++. The
 original ASIC RTL is used unmodified and built with `+define+SIM`.
 
+## BIO-Mirror prototype
+
+This checkout also contains **BIO-Mirror**, a cycle-aware behavioral
+conformance harness built on top of `bio-sim`. It captures real Verilator
+monitor output, normalizes GPIO events, checks an executable timing contract,
+and reports the first observed divergence. Run the complete known-good and
+deliberate-regression demonstration with:
+
+```bash
+./demo_biomirror.py
+```
+
+See [BIOMIRROR.md](./BIOMIRROR.md) for one-time container setup, direct CLI
+usage, generated evidence, the optional isolated RTL-mutation test, precise
+scope, Dabao hardware roadmap, project provenance, and the two-minute demo
+script.
+
+Current prototype evidence:
+
+- 39 standard-library unit and CLI tests.
+- A known-good firmware run that passes 13/13 compared GPIO events and 6/6
+  behavior invariants.
+- A deliberate firmware timing mutation rejected at event 2, with the pulse
+  measured 70 cycles early (`-48.6%`).
+- An optional isolated RTL polarity mutation rejected at event 1 while using
+  the unchanged known-good firmware binary.
+
+BIO-Mirror is a verification-method prototype. It does not claim a Baochip
+defect, exhaustive processor correctness, or RTL-to-silicon equivalence.
+
 ## Development Loop
 
 The basic development loop is:

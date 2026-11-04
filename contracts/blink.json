@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "name": "BIO blink on gpio_out[21]",
+  "selector": {
+    "signal": "gpio_out",
+    "pin": 21
+  },
+  "timing_tolerance_cycles": 4,
+  "invariants": {
+    "alternation": true,
+    "pulse_width_cycles": {
+      "high": {
+        "expected": 144,
+        "min": 140,
+        "max": 148
+      },
+      "low": {
+        "expected": 167,
+        "min": 163,
+        "max": 171
+      }
+    },
+    "min_interval_cycles": 100,
+    "edge_count": {
+      "min": 3
+    },
+    "allowed_pins": [
+      21
+    ]
+  }
+}

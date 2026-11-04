@@ -1,0 +1,4 @@
+[build] unrelated output
+progress: 10% [mon] cyc=60 (2400000 ps)  gpio_out[21]: 0 -> 1
+progress: 50% [mon] cyc=204 (99000000 ps)  gpio_out[21]: 1 -> 0
+progress: 90% [mon] cyc=371 (199000000 ps)  gpio_out[21]: 0 -> 1

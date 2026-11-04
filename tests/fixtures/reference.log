@@ -1,0 +1,6 @@
+container progress 20%
+[mon] watching gpio_out bit 21
+[mon] cyc=47 (2317838 ps)  gpio_dir[21]: 0 -> 1
+[mon] cyc=58 (2352134 ps)  gpio_out[21]: 0 -> 1
+[mon] cyc=202 (99535566 ps)  gpio_out[21]: 1 -> 0
+[mon] cyc=369 (196698992 ps)  gpio_out[21]: 0 -> 1

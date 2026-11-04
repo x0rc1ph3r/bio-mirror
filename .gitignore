@@ -2,6 +2,12 @@ build/
 *.fst
 *.vcd
 sim/json.hpp
+.venv/
+artifacts/
+**/.zig-global-cache/
+**/__pycache__/
+sw/blink_reference/blink_reference.rs
+sw/blink_fault/blink_fault.rs
 
 # zig artifacts
 .zig-cache/
